@@ -14,25 +14,14 @@
         </h2>
         <div class="section">
             <div class="search">
-              <form action="">
-                <input type="text" placeholder="enter city Or Country Name">
-              </form>
+              <form >
+                <input type="text" id="cityInput" placeholder="enter city Or Country Name">
+                <input type="submit" value="Get Weather">
+            </form>
+           
             </div>
-           <button class="btn">Get Weather</button>
-        </div>
-        <div class="footer">
-            <div class="temp">
-                <h1>5*c</h1>
-            </div>
-            <div class="review">
-                <h3>Overcast Cloud</h3>
-            </div>
-            <div class="infooter">
-                <div class="box"> feels like: 4</div>
-                <div class="box"> humidity</div>
-                <div class="box">speed</div>
-            </div>
-        </div>
+     </div>
+       
     </div>
 </div>
     <!----------------------------------- css file------------------------------------------- -->
@@ -74,9 +63,6 @@
         /* border: 2px solid red; */
         width: 100%;
     }
-    .search{
-      
-    }
 .btn{
     background-color: blue;
     color: rgb(255, 255, 255);
@@ -113,7 +99,38 @@
 
      <!---------------------------------------------js code -------------------------->
      <script>
-        alert('hello');
+        const apiKey="0e7d1a2589be02046314df8706c0c13d";
+        const cityInput=document.getElementById('cityInput');
+        const form=document.querySelector("form");
+        async function logJSONData(cityValue) {
+        const response = await fetch(`http://api.weatherstack.com/current
+    ? access_key = 8dd52666bfb2141c3f2124d7a99b055d
+    & query = New York}`);
+        const jsonData = await response.json();
+     
+        }
+
+        form.addEventListener('submit',()=>{
+            event.preventDefault();
+            const cityValue=cityInput.value;
+            logJSONData(cityValue);
+           `<div class="footer">
+            <div class="temp">
+                <h1>${current.tempreture}</h1>
+            </div>
+            <div class="review">
+                <h3>${current.weather_descriptions}</h3>
+            </div>
+            <div class="infooter">
+                <div class="box"> feels like:${}</div>
+                <div class="box"> ${}</div>
+                <div class="box">${}</div>
+            </div>
+        </div>`
+        })
+        
+
+    
      </script>
 </body>
 </html>
