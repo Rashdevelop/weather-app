@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>weather app</title>
+</head>
+<body>
+    <div class="div">
+    <div class="container">
+        <h2>
+            Weather App
+        </h2>
+        <div class="section">
+            <div class="search">
+              <form >
+                <input type="text" id="cityInput" placeholder="enter city Or Country Name">
+                <input type="submit" value="Get Weather">
+            </form>
+           
+            </div>
+     </div>
+       
+    </div>
+</div>
+    <!----------------------------------- css file------------------------------------------- -->
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        .div{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: bisque;
+            height: 100vh;
+            width: 100vw;
+        }
+        .container{
+            height: 50%;
+            width: 50%;
+            background-color: rgb(255, 255, 255);
+            box-shadow: 10px 10px 8px #888829;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+    .container > h2{
+        text-align: center;
+        width: 100%;
+  
+    }
+    .section{
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        flex-direction: row;
+        text-align: center;
+        /* border: 2px solid red; */
+        width: 100%;
+    }
+.btn{
+    background-color: blue;
+    color: rgb(255, 255, 255);
+    padding: 3px;
+    border-radius: 3px;
+}
+.footer{
+   
+    width: 100%;
+    height: auto;
+    text-align: center;
+}
+.temp{
+    height: 82px;
+    align-items: center;
+}
+.review > h3{
+    font-weight: lighter;
+}
+.infooter{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: row;
+    margin-top: 15px;
+}
+.box{
+    padding: 14px;
+    background-color: rgb(223, 220, 220);
+    font-size: 20px;
+}
+
+    </style>
+
+     <!---------------------------------------------js code -------------------------->
+     <script>
+        const apiKey="0e7d1a2589be02046314df8706c0c13d";
+        const cityInput=document.getElementById('cityInput');
+        const form=document.querySelector("form");
+        async function logJSONData(cityValue) {
+        const response = await fetch(`http://api.weatherstack.com/current
+    ? access_key = 8dd52666bfb2141c3f2124d7a99b055d
+    & query = New York}`);
+        const jsonData = await response.json();
+     
+        }
+
+        form.addEventListener('submit',()=>{
+            event.preventDefault();
+            const cityValue=cityInput.value;
+            logJSONData(cityValue);
+           `<div class="footer">
+            <div class="temp">
+                <h1>${current.tempreture}</h1>
+            </div>
+            <div class="review">
+                <h3>${current.weather_descriptions}</h3>
+            </div>
+            <div class="infooter">
+                <div class="box"> feels like:${}</div>
+                <div class="box"> ${}</div>
+                <div class="box">${}</div>
+            </div>
+        </div>`
+        })
+        
+
+    
+     </script>
+</body>
+</html>
